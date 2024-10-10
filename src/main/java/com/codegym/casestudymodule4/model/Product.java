@@ -28,6 +28,4 @@ public class Product {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ProductStatus status;  // Available, Unavailable
-
-    // Getters and setters
 }

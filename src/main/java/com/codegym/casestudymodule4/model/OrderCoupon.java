@@ -18,6 +18,5 @@ public class OrderCoupon {
     @ManyToOne
     @JoinColumn(name = "coupon_id", nullable = false)
     private Coupon coupon;
-
     // Getters and setters
 }
