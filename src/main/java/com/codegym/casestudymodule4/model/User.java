@@ -32,5 +32,4 @@ public class User {
     @Column(nullable = false)
     private AccountStatus status;
 
-
 }
