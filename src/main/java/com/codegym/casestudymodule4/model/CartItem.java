@@ -21,5 +21,5 @@ public class CartItem {
 
     private Integer quantity;
 
-    // Getters and setters
+
 }
