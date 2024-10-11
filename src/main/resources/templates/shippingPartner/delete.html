@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Xác nhận xóa đối tác vận chuyển</title>
+</head>
+<body>
+<h1>Xác nhận xóa đối tác vận chuyển</h1>
+<div>
+    <p>Bạn có chắc chắn muốn xóa đối tác vận chuyển sau:</p>
+    <p>Tên: <span th:text="${shippingPartner.name}"></span></p>
+    <p>Số điện thoại: <span th:text="${shippingPartner.phoneNumber}"></span></p>
+    <p>Email: <span th:text="${shippingPartner.email}"></span></p>
+    <p>Địa chỉ: <span th:text="${shippingPartner.address}"></span></p>
+</div>
+<form th:action="@{/admin/shippingPartner/delete}" method="post">
+    <input type="hidden" th:name="id" th:value="${shippingPartner.id}" />
+    <button type="submit">Xóa</button>
+        <a th:href="@{/admin/shippingPartner/list}">Hủy</a>
+    <div th:if="${error}">
+        <p th:text="${error}"></p>
+    </div>
+</form>
+</body>
+</html>

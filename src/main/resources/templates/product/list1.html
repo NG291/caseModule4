@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Các Món Ăn Được Quảng Bá</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
+            width: 100px; /* Kích thước hình ảnh */
+        }
+    </style>
+</head>
+<body>
+<h1>Các Món Ăn Được Quảng Bá</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Tên Món Ăn</th>
+        <th>Giá</th>
+        <th>Mô Tả</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${promotedProducts}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.description}"></td>
+<!--        <td><img th:src="${product.imageUrl}" alt="Hình ảnh món ăn"></td>-->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,7 +1,6 @@
 package com.codegym.casestudymodule4.model.ENUM;
 
-public enum CouponStatus {
+public enum ShippingPartnerStatus {
     ACTIVE,
-    EXPIRED
+    INACTIVE
 }
-

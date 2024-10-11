@@ -21,5 +21,4 @@ public class CartItem {
 
     private Integer quantity;
 
-
 }

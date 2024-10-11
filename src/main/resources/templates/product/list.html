@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh Sách Sản Phẩm</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<form action="/admin/products/search" method="get">
+    <input type="text" name="name" placeholder="Tìm kiếm món ăn..." required/>
+    <button type="submit">Tìm kiếm</button>
+</form>
+<h1>Danh Sách Sản Phẩm</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Tên Món Ăn</th>
+        <th> Xem chi tiet</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.name}"></td>
+        <td>
+            <a th:href="@{/admin/products/{id}/view(id=${product.productId})}">view</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
