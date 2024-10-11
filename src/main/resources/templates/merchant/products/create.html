@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tạo Sản Phẩm Mới</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Tạo Sản Phẩm Mới</h1>
+    <form action="#" th:action="@{/products}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label for="merchant">Nhà Bán:</label>
+            <select id="merchant" class="form-control" th:field="*{merchant}" required>
+                <option th:each="merchant : ${merchants}" th:value="${merchant.id}" th:text="${merchant.name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Tên Sản Phẩm:</label>
+            <input type="text" id="name" class="form-control" th:field="*{name}" required />
+        </div>
+        <div class="form-group">
+            <label for="description">Mô Tả:</label>
+            <textarea id="description" class="form-control" th:field="*{description}" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Giá:</label>
+            <input type="number" id="price" class="form-control" th:field="*{price}" step="0.01" required />
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">URL Hình Ảnh:</label>
+            <input type="text" id="imageUrl" class="form-control" th:field="*{imageUrl}" required />
+        </div>
+        <div class="form-group">
+            <label for="status">Trạng Thái:</label>
+            <select id="status" class="form-control" th:field="*{status}" required>
+                <option value="AVAILABLE">Có Sẵn</option>
+                <option value="UNAVAILABLE">Không Có Sẵn</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Tạo</button>
+    </form>
+    <a href="/products" class="btn btn-secondary mt-3">Quay lại danh sách</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
