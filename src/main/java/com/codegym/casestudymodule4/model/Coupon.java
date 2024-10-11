@@ -4,6 +4,7 @@ import com.codegym.casestudymodule4.model.ENUM.CouponStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "coupons")
@@ -28,6 +29,6 @@ public class Coupon {
 
     @Column(name = "expiry_date")
     private LocalDate expiryDate;
-
-    // Getters and setters
+    @ManyToMany(mappedBy = "coupons")
+    private List<Product> product;
 }

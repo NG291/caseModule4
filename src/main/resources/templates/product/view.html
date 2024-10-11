@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chi tiết Món Ăn</title>
+    <style>
+        .product-details {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="product-details">
+    <h1 th:text="${product.name}"></h1>
+    <img th:src="${product.imageUrl}" alt="Hình ảnh món ăn" class="product-image"/>
+    <p><strong>Mô tả:</strong> <span th:text="${product.description}"></span></p>
+    <p><strong>Giá:</strong> <span th:text="${#numbers.formatDecimal(product.price, 2, 2)}"></span> VNĐ</p>
+    <p><strong>Khuyến mãi:</strong> <span th:text="${product.isPromoted} ? 'Có' : 'Không'"></span></p>
+    <p><strong>Trạng thái:</strong> <span th:text="${product.status}"></span></p>
+    <a th:href="@{/admin/products/search}">Quay lại danh sách món ăn</a>
+</div>
+</body>
+</html>

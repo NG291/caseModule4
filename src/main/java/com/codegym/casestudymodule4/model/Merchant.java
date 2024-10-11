@@ -26,5 +26,4 @@ public class Merchant {
     @Column(name = "is_partner", nullable = false)
     private Boolean isPartner;
 
-    // Getters and setters
 }
