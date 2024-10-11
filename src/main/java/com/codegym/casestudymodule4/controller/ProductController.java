@@ -72,7 +72,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/products")
+@RequestMapping("/merchant/products")
 public class ProductController {
 
     @Autowired
