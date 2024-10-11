@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Coupon List</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">List of Coupons</h1>
+    <a th:href="@{/merchant/coupons/create}" class="btn btn-primary mb-3">Create New Coupon</a>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Discount Value</th>
+            <th>Status</th>
+            <th>Expiry Date</th>
+            <th>Merchant</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="coupon : ${coupons}">
+            <td th:text="${coupon.couponId}"></td>
+            <td th:text="${coupon.code}"></td>
+            <td th:text="${coupon.discountValue}"></td>
+            <td th:text="${coupon.status}"></td>
+            <td th:text="${coupon.expiryDate}"></td>
+            <td th:text="${coupon.merchant.getStoreName()}"></td>
+            <td>
+                <a th:href="@{/merchant/coupons/edit/{id}(id=${coupon.couponId})}" class="btn btn-warning btn-sm">Edit</a>
+                <a th:href="@{/merchant/coupons/delete/{id}(id=${coupon.couponId})}"
+                   th:onclick="return confirm('Are you sure you want to delete this coupon?')"
+                   class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

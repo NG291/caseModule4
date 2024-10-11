@@ -2,10 +2,12 @@ package com.codegym.casestudymodule4.model;
 
 import com.codegym.casestudymodule4.model.ENUM.CouponStatus;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDate;
 
 @Entity
+@Data
 @Table(name = "coupons")
 public class Coupon {
     @Id

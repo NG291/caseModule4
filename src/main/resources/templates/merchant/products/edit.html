@@ -10,7 +10,7 @@
 <body>
 <div class="container mt-5">
     <h1 class="mb-4">Edit Product</h1>
-    <form action="#" th:action="@{/products/{id}(id=${product.productId})}" th:object="${product}" method="post">
+    <form action="#" th:action="@{/merchant/products/update/{id}(id=${product.productId})}" th:object="${product}" method="post" >
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" class="form-control" th:field="*{name}" />
@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <label for="merchant">Merchant ID:</label>
-            <input type="text" id="merchant" class="form-control" th:field="*{merchant.id}" readonly />
+            <input type="text" id="merchant" class="form-control" th:field="*{merchant}" readonly />
             <small class="form-text text-muted">Merchant ID is automatically set.</small>
         </div>
         <div class="form-group">
@@ -41,7 +41,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
-    <a href="/products" class="btn btn-secondary mt-3">Back to list</a>
+    <a href="/merchant/products" class="btn btn-secondary mt-3">Back to list</a>
 </div>
 
 <!-- Bootstrap JS (optional) -->

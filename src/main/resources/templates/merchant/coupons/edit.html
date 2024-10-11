@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edit Coupon</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Edit Coupon</h1>
+    <form action="#" th:action="@{/coupons/{id}(id=${coupon.couponId})}" th:object="${coupon}" method="post">
+        <div class="form-group">
+            <label for="merchant">Merchant:</label>
+            <select id="merchant" class="form-control" th:field="*{merchant}" required>
+                <option th:each="merchant : ${merchants}"
+                        th:value="${merchant.id}"
+                        th:text="${merchant.name}"
+                        th:selected="${merchant.id == coupon.merchant.id}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="code">Code:</label>
+            <input type="text" id="code" class="form-control" th:field="*{code}" required />
+        </div>
+        <div class="form-group">
+            <label for="discountValue">Discount Value:</label>
+            <input type="number" id="discountValue" class="form-control" th:field="*{discountValue}" required />
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select id="status" class="form-control" th:field="*{status}">
+                <option value="ACTIVE" th:selected="${coupon.status == 'ACTIVE'}">Active</option>
+                <option value="EXPIRED" th:selected="${coupon.status == 'EXPIRED'}">Expired</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="date" id="expiryDate" class="form-control" th:field="*{expiryDate}" />
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    <a href="/merchant/coupons" class="btn btn-secondary mt-3">Back to list</a>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
