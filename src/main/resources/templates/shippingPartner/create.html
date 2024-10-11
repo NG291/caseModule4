@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thêm đối tác vận chuyển</title>
+</head>
+<body>
+<h1>Thêm đối tác vận chuyển</h1>
+<form th:action="@{/admin/shippingPartner/save}" th:object="${shippingPartner}" method="post">
+
+    <label for="name">Tên:</label>
+    <input type="text" id="name" th:field="*{name}" /><br/>
+
+    <label for="phoneNumber">Số điện thoại:</label>
+    <input type="text" id="phoneNumber" th:field="*{phoneNumber}" /><br/>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" /><br/>
+
+    <label for="address">Địa chỉ:</label>
+    <input type="text" id="address" th:field="*{address}" /><br/>
+
+    <label for="status">Trạng thái:</label>
+    <select id="status" th:field="*{status}">
+        <option value="ACTIVE">Active</option>
+        <option value="INACTIVE">Inactive</option>
+    </select>
+
+    <label for="isLocked">Khóa:</label>
+    <input type="checkbox" id="isLocked" th:field="*{isLocked}" /><br/>
+    <button type="submit">Lưu</button>
+</form>
+</body>
+</html>
+
+

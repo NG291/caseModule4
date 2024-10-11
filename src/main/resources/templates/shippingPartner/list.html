@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách đối tác vận chuyển</title>
+</head>
+<body>
+<h1>Danh sách đối tác vận chuyển</h1>
+<a th:href="@{/admin/shippingPartner/create}">Thêm đối tác vận chuyển</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Số điện thoại</th>
+        <th>Email</th>
+        <th>Địa chỉ</th>
+        <th>Trạng thái</th>
+        <th>Khóa</th>
+        <th>Hành động</th>
+        <th>Tình trạng</th>
+    </tr>
+    <tr th:each="partner : ${shippingPartners}">
+        <td th:text="${partner.id}"></td>
+        <td th:text="${partner.name}"></td>
+        <td th:text="${partner.phoneNumber}"></td>
+        <td th:text="${partner.email}"></td>
+        <td th:text="${partner.address}"></td>
+        <td th:text="${partner.status}"></td>
+        <td th:text="${partner.isLocked ? 'Yes' : 'No'}"></td>
+        <td>
+            <a th:href="@{/admin/shippingPartner/{id}/update(id=${partner.id})}">Sửa</a> |
+            <a th:href="@{/admin/shippingPartner/{id}/delete(id=${partner.id})}">Xóa</a>
+        </td>
+        <td>
+            <form th:action="@{/admin/shippingPartner/{id}/lock(id=${partner.id})}" method="post" th:if="${!partner.isLocked}">
+                <button type="submit">Khóa</button>
+            </form>
+            <form th:action="@{/admin/shippingPartner/{id}/unlock(id=${partner.id})}" method="post" th:if="${partner.isLocked}">
+                <button type="submit">Mở Khóa</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
